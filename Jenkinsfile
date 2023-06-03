@@ -98,9 +98,15 @@ pipeline {
 
         }
 
-    stage ('Deploy to Dev Environment') {
+    // stage ('Deploy to Dev Environment') {
+    //     steps {
+    //     build job: 'ansible-config-1/main', parameters: [[$class: 'StringParameterValue', name: 'env', value: 'dev']], propagate: false, wait: true
+    //     }
+    // }
+
+    stage ('Deploy to Dev and Prod Environment') {
         steps {
-        build job: 'ansible-config-1/main', parameters: [[$class: 'StringParameterValue', name: 'env', value: 'dev']], propagate: false, wait: true
+        build job: ansiblePlaybook become: true, installation: 'ansible', inventory: 'dev', playbook: 'site.yml'
         }
     }
 
