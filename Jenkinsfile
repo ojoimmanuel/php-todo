@@ -106,5 +106,3 @@ pipeline {
 
   }
 }
-
-// test auto build
