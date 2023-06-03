@@ -104,6 +104,7 @@ pipeline {
     //     }
     // }
 
+
     stage ('Deploy to Dev and Prod Environment') {
         steps {
         build job: 'ansible-config-1/main', parameters: [[$class: 'StringParameterValue', name: 'env', value: 'dev-n-prod']], propagate: false, wait: true
